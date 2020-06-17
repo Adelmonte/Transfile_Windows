@@ -1,35 +1,50 @@
 package com.mihai.transfile.frontend;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Image;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import java.awt.CardLayout;
 import java.awt.Color;
-import javax.swing.JLayeredPane;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class FrontUnit extends JFrame {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Font;
 
+public class GraphicUserInterface {
+
+	private JFrame frame;
+	
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+
+	private JPanel home;
+	private JPanel settings;
+	private JPanel client;
+	private JPanel server;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FrontUnit frame = new FrontUnit();
-					frame.setVisible(true);
-				} catch (Exception e) {
+	public static void main(String[] args) 
+	{
+		EventQueue.invokeLater(new Runnable() 
+		{
+			public void run() 
+			{
+				try 
+				{
+					GraphicUserInterface window = new GraphicUserInterface();
+					window.frame.setVisible(true);
+				}
+				catch (Exception e) 
+				{
 					e.printStackTrace();
 				}
 			}
@@ -37,56 +52,60 @@ public class FrontUnit extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the application.
 	 */
-	public FrontUnit() 
-	{
-		setEnabled(false);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 676, 499);
+	public GraphicUserInterface() {
+		
+		
+		initialize();
+		
 		contentPane = new JPanel();
+		frame.setContentPane(contentPane);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		
 		contentPane.setLayout(null);
 		
 		/*******/
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setBounds(212, 0, 448, 460);
+		layeredPane.setLayout(new CardLayout(0, 0));
 		contentPane.add(layeredPane);
 		
-		JPanel home = new JPanel();
+		home = new JPanel();
 		home.setBounds(0, 0, 448, 460);
 		home.setBackground(new Color(28,111,166));
 		home.setLayout(null);
 		layeredPane.add(home);
 		
-		JLabel lblHome = new JLabel("home");
-		lblHome.setBounds(0, 0, 46, 14);
-		home.add(lblHome);
+			JLabel lblHome = new JLabel("Bun venit!");
+			lblHome.setFont(new Font("Tahoma", Font.PLAIN, 26));
+			lblHome.setForeground(Color.WHITE);
+			lblHome.setBounds(170, 33, 151, 32);
+			home.add(lblHome);
 		
-		JPanel server = new JPanel();
+		server = new JPanel();
 		server.setBounds(0, 0, 448, 460);
 		server.setBackground(new Color(28,111,166));
 		layeredPane.add(server);
 		
-		JLabel lblServer = new JLabel("server");
-		server.add(lblServer);
+			JLabel lblServer = new JLabel("server");
+			server.add(lblServer);
 		
-		JPanel client = new JPanel();
+		client = new JPanel();
 		client.setBounds(0, 0, 448, 460);
 		client.setBackground(new Color(28,111,166));
 		layeredPane.add(client);
 		
-		JLabel lblClient = new JLabel("client");
-		client.add(lblClient);
+			JLabel lblClient = new JLabel("client");
+			client.add(lblClient);
 		
-		JPanel settings = new JPanel();
+		settings = new JPanel();
 		settings.setBounds(0, 0, 448, 460);
 		settings.setBackground(new Color(28,111,166));
 		layeredPane.add(settings);
 		
-		JLabel lblSett = new JLabel("sett");
-		settings.add(lblSett);
+			JLabel lblSett = new JLabel("sett");
+			settings.add(lblSett);
 		
 		
 		/*****/
@@ -131,10 +150,11 @@ public class FrontUnit extends JFrame {
 		JPanel scthome = new JPanel();
 		scthome.addMouseListener(new MouseAdapter() 
 		{
-			boolean value=true;
+			
 			@Override
 			public void mouseClicked(MouseEvent arg0) 
 			{
+				boolean value=true;
 				home.setVisible(value);
 				
 				server.setVisible(!value);
@@ -159,10 +179,10 @@ public class FrontUnit extends JFrame {
 		JPanel sctserver = new JPanel();
 		sctserver.addMouseListener(new MouseAdapter() 
 		{
-			boolean value=true;
+			
 			@Override
 			public void mouseClicked(MouseEvent e) 
-			{
+			{boolean value=true;
 				server.setVisible(value);
 				
 				home.setVisible(!value);
@@ -187,10 +207,11 @@ public class FrontUnit extends JFrame {
 		JPanel sctclient = new JPanel();
 		sctclient.addMouseListener(new MouseAdapter() 
 		{
-			boolean value=true;
+			
 			@Override
 			public void mouseClicked(MouseEvent e) 
 			{
+				boolean value=true;
 				client.setVisible(value);
 				
 				home.setVisible(!value);
@@ -215,10 +236,11 @@ public class FrontUnit extends JFrame {
 		JPanel sctsett = new JPanel();
 		sctsett.addMouseListener(new MouseAdapter() 
 		{
-			boolean value=true;
+			
 			@Override
 			public void mouseClicked(MouseEvent e) 
 			{
+				boolean value=true;
 				settings.setVisible(value);
 				
 				home.setVisible(!value);
@@ -240,8 +262,34 @@ public class FrontUnit extends JFrame {
 		lbSettings.setBounds(66, 11, 46, 14);
 		sctsett.add(lbSettings);
 		
-		
-		
-		
+		JButton btnAcasa = new JButton("Acasa");
+		btnAcasa.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				boolean value=true;
+				settings.setVisible(value);
+				
+				home.setVisible(!value);
+				server.setVisible(!value);
+				client.setVisible(!value);
+			}
+		});
+		btnAcasa.setBounds(35, 384, 89, 23);
+		drawer.add(btnAcasa);
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("TransFile");
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\LucrareaLicenta\\Workspaces\\Server\\TransFile\\images\\TransFile.png"));
+		frame.setEnabled(true);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setBounds(100, 100, 676, 500);
 	}
 }
