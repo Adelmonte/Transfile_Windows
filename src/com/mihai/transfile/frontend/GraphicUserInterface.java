@@ -8,8 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -19,9 +22,14 @@ import javax.swing.border.EmptyBorder;
 import com.mihai.transfile.middleend.Link;
 
 import java.awt.Font;
+import java.awt.Desktop;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import javax.swing.JRadioButton;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class GraphicUserInterface {
 
@@ -37,6 +45,7 @@ public class GraphicUserInterface {
 	private JTextField tfIpCl;
 	private JTextField tfPortCl;
 	private JTextField tfPortSvr;
+	private JLabel lblErr;
 
 	/**
 	 * Launch the application.
@@ -89,51 +98,84 @@ public class GraphicUserInterface {
 			JLabel lblHome = new JLabel("Bun venit!");
 			lblHome.setFont(new Font("Tahoma", Font.PLAIN, 26));
 			lblHome.setForeground(Color.WHITE);
-			lblHome.setBounds(170, 33, 151, 32);
+			lblHome.setBounds(154, 11, 151, 32);
 			home.add(lblHome);
 			
-			JLabel lbltitle = new JLabel("ptitle");
+			JLabel lbltitle = new JLabel("Instruc\u021Biuni pentru utilizarea aplica\u021Biei");
 			lbltitle.setForeground(Color.WHITE);
-			lbltitle.setBounds(31, 99, 213, 14);
+			lbltitle.setBounds(10, 54, 213, 14);
 			home.add(lbltitle);
 			
-			JLabel lblPrgtitle = new JLabel("prgTitle");
+			JLabel lblPrgtitle = new JLabel("Opera\u021Bii pentru trimiterea fi\u0219ierului");
 			lblPrgtitle.setForeground(Color.WHITE);
-			lblPrgtitle.setBounds(41, 124, 46, 14);
+			lblPrgtitle.setBounds(20, 79, 280, 14);
 			home.add(lblPrgtitle);
-			
-			JLabel lblPrg = new JLabel("prg1");
-			lblPrg.setForeground(Color.WHITE);
-			lblPrg.setBounds(51, 149, 46, 14);
-			home.add(lblPrg);
-			
-			JLabel lblPrgtitle_1 = new JLabel("prg2title");
+						
+			JLabel lblPrgtitle_1 = new JLabel("Opera\u021Bii pentru recep\u021Bionarea fi\u0219ierului");
 			lblPrgtitle_1.setForeground(Color.WHITE);
-			lblPrgtitle_1.setBounds(41, 189, 46, 14);
+			lblPrgtitle_1.setBounds(20, 273, 232, 14);
 			home.add(lblPrgtitle_1);
 			
-			JLabel lblPrg_1 = new JLabel("prg2");
+			String para2="<html>"
+					+ "Întâi, în meniul din stânga și se alege „Setări”. Aici, la secțiunea pentru\r\n" + 
+					"        primirea fișierului, în prima casetă de introducere a textului se completează adresa Ipv4\r\n" + 
+					"        validă a dispozitivului distant, iar la următorarea casetă de introducere a textului se\r\n" + 
+					"        introduce un număr pentru portul digital dorit (același ca cel introdus la secțiunea de\r\n" + 
+					"        trimitere a fișierului de la aplicația distantă TransFile\r\n" + 
+					"        . Se selectează de la secțiunea „Setări trimitere fișier”, un protocol de\r\n" + 
+					"        transfer, un algoritm de criptare și se introduce un număr de port digital\r\n" + 
+					"        obligatoriu mai mare de 2000, dar mai mic de 65000).\r\n" + 
+					"        Mai apoi, se apasă butonul rotund din dreapta jos, această acțiune având ca rezultat\r\n" + 
+					"        afișarea unui mesaj care va conține „Setări salvate!” sau „Există o eroare!”."
+					+ "</html>";
+			JLabel lblPrg_1 = new JLabel("<html>\r\nÎntâi, în meniul din stânga și se alege „Setări”. Aici, la secțiunea pentru\r\n        primirea fișierului, în prima casetă de introducere a textului se completează adresa Ipv4\r\n        validă a dispozitivului distant, iar la următorarea casetă de introducere a textului se\r\n        introduce un număr pentru portul digital dorit (același ca cel introdus la secțiunea de\r\n        trimitere a fișierului de la aplicația distantă TransFile. Mai apoi, se apasă butonul din dreapta jos, această acțiune având ca rezultat afișarea unui mesaj care va conține „Setări salvate!” sau „Există o eroare!”.</html>");
+			lblPrg_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 			lblPrg_1.setForeground(Color.WHITE);
-			lblPrg_1.setBounds(51, 231, 46, 14);
+			lblPrg_1.setBounds(30, 293, 398, 112);
 			home.add(lblPrg_1);
 			
-			JLabel lblAct = new JLabel("Act");
-			lblAct.setForeground(Color.WHITE);
-			lblAct.setBounds(41, 359, 46, 14);
+			String paragr="<html>"
+					+ "Atenție, este obligatorie urmarea instrucțiunilor pentru trimiterea\r\n" + 
+					"        mai întâi a fișierului, iar apoi cele pentru primirea fișierului!"
+					+ "</html>";
+			JLabel lblAct = new JLabel(paragr);
+			lblAct.setForeground(Color.BLACK);
+			lblAct.setBounds(20, 417, 406, 32);
 			home.add(lblAct);
-		
+			
+			String parag="<html>"
+					+ "Întâi, în meniul din stânga se alege „Setări”. Aici, se selectează un protocol" + 
+					"        de transfer, un algoritm de criptare și se introduce numărul portului digital." + 
+					"        Se apasă butonul de salvare a setărilor, această acțiune având ca rezultat afișarea unui mesaj\r\n" + 
+					"        care va conține „Setări salvate!” sau „Există o eroare!”. În continuare, în meniul din dreapta se selectează\r\n" + 
+					"        „Trimite fișierul”. Pe ecran sunt două butoane. Se apasă butonul de selecție a unui fișier\r\n" + 
+					"        și se selectează fișierul dorit. După selecție aplicația va afișa un ecran cu\r\n" + 
+					"        patru butoane. Este imperios să se apese butonul cel mai de sus, pentru a confirma selecția\r\n" + 
+					"        fișierului. Există posibilitatea selecției altui fișier, a deschiderii fișierului selectat\r\n" + 
+					"        în aplicație externă și posibilitatea revenirii la ecranul inițial. După acești pași, se\r\n" + 
+					"        apasă butonul „Trimiteți fișierul”. În continuare, se vor urma instrucțiunile pentru\r\n" + 
+					"        primirea fișierului din aplicația TransFile distantă."
+					+ "</html>";
+			JLabel lbpar1 = new JLabel("<html>Întâi, în meniul din stânga se alege „Setări”. Aici, se selectează un protocol de transfer, un algoritm de criptare și se introduce numărul portului digital (același ca cel introdus la secțiunea de primire a fișierului de la aplicația distantă Transfile) . Se va apasa butonul de salvare a setărilor, această acțiune având ca rezultat afișarea unui mesaj care va conține „Setări salvate!” sau „Există o eroare!”. În continuare, în meniul din dreapta se selectează „Trimite fișier”. Pe ecran sunt trei butoane. Se apasă butonul „Selectează fișier” și se selectează fișierul dorit. Există și posibilitatea deschiderii fișierului selectat în aplicație externă. După acești pași, se apasă butonul „Trimiteți fișierul!”. În continuare, se vor urma instrucțiunile pentru primirea fișierului din aplicația TransFile distantă.</html>");
+			lbpar1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+			lbpar1.setForeground(Color.WHITE);
+			lbpar1.setBounds(30, 104, 408, 151);
+			home.add(lbpar1);
+			
 		server = new JPanel();
 		server.setBounds(0, 0, 448, 460);
 		server.setBackground(new Color(28,111,166));
 		layeredPane.add(server);
 			server.setLayout(null);
 		
-			JLabel lblServer = new JLabel("server");
+			JLabel lblServer = new JLabel("Calea fișierului ales este:");
 			lblServer.setForeground(Color.WHITE);
-			lblServer.setBounds(208, 5, 31, 14);
+			lblServer.setBounds(51, 106, 195, 14);
+			lblServer.setVisible(false);
 			server.add(lblServer);
 			
-			JButton btnServer = new JButton("Server");
+			JButton btnServer = new JButton("Trimiteți fișierul");
+			btnServer.setBackground(Color.WHITE);
 			btnServer.addActionListener(new ActionListener() 
 			{
 				public void actionPerformed(ActionEvent e) 
@@ -141,8 +183,84 @@ public class GraphicUserInterface {
 					Link.serverCall();
 				}
 			});
-			btnServer.setBounds(180, 303, 89, 23);
+			btnServer.setBounds(50, 310, 160, 30);
 			server.add(btnServer);
+			
+			JLabel lblPath = new JLabel("<html>Nu ați selectat nici un fișier.</html>");
+			lblPath.setForeground(Color.WHITE);
+			lblPath.setBounds(61, 131, 352, 102);
+			server.add(lblPath);
+			
+			JButton btn2 = new JButton("Selectează fișierul");
+			btn2.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e) 
+				{
+					//selecteaza fișierul
+					String path;
+					JFileChooser jfc = new JFileChooser();
+					jfc.setCurrentDirectory(new java.io.File("C:/Users/Mihai/Desktop"));
+					jfc.setDialogTitle("Alegere Fisier");
+					if (jfc.showOpenDialog(null)== JFileChooser.APPROVE_OPTION)
+					{}
+					File F = jfc.getSelectedFile().getAbsoluteFile();
+					lblServer.setVisible(true);
+					path=F.getAbsolutePath();
+					lblPath.setText("<html>"+path+"</html>");
+					Link.setServerPath(path);
+				}
+			});
+			btn2.setBackground(Color.WHITE);
+			btn2.setBounds(260, 310, 160, 30);
+			server.add(btn2);
+			
+			JButton btn1 = new JButton("Vizualizați fișierul!");
+			btn1.setBackground(Color.WHITE);
+			btn1.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e) 
+				{
+					//deschide fis in aplicatie externa
+					String path = Link.getServerFilePath();
+					if (!path.equals(null))
+					{
+						File f=null;
+						try
+						{
+							f=new File(path);
+						}
+						catch (Exception l)
+						{
+							lblPath.setText("A survenit o eroare!");
+						}
+						if(!Desktop.isDesktopSupported())
+						{
+							lblPath.setText("A survenit o eroare!");
+						}
+			        
+						Desktop desktop = Desktop.getDesktop();
+						try
+						{
+							if(f.exists()) desktop.open(f);
+						}
+						catch(IOException k)
+						{
+							lblPath.setText("A survenit o eroare!");
+						}
+					}
+					else
+						lblPath.setText("A survenit o eroare!");
+					
+				}
+			});
+			btn1.setBounds(51, 364, 160, 30);
+			server.add(btn1);
+			
+			JLabel lblServer_1 = new JLabel("Trimite fișier");
+			lblServer_1.setForeground(Color.WHITE);
+			lblServer_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblServer_1.setBounds(163, 11, 170, 37);
+			server.add(lblServer_1);
 		
 		client = new JPanel();
 		client.setBounds(0, 0, 448, 460);
@@ -150,21 +268,82 @@ public class GraphicUserInterface {
 		layeredPane.add(client);
 			client.setLayout(null);
 		
-			JLabel lblClient = new JLabel("client");
+			JLabel lblClient = new JLabel("Fișierul este salvat la locația:");
 			lblClient.setForeground(Color.WHITE);
-			lblClient.setBounds(211, 5, 25, 14);
+			lblClient.setBounds(57, 91, 151, 14);
+			lblClient.setVisible(false);
 			client.add(lblClient);
 			
-			JButton btnClient = new JButton("btnClient");
+			JLabel lblPath_1 = new JLabel("Fișierul încă nu a fost primit.");
+			lblPath_1.setForeground(Color.WHITE);
+			lblPath_1.setBounds(67, 116, 160, 14);
+			client.add(lblPath_1);
+			
+			JButton btnClient = new JButton("Permiteți primirea fișierului!");
+			btnClient.setFont(new Font("Tahoma", Font.PLAIN, 11));
+			btnClient.setBackground(Color.WHITE);
+			btnClient.setForeground(Color.BLACK);
 			btnClient.addActionListener(new ActionListener() 
 			{
 				public void actionPerformed(ActionEvent e) 
 				{
 					boolean err=Link.clientCall();
+					lblClient.setVisible(true);
+					lblPath_1.setText(Link.getClientFilePath());
 				}
 			});
-			btnClient.setBounds(128, 311, 89, 23);
+			btnClient.setBounds(38, 319, 166, 30);
 			client.add(btnClient);
+			
+			
+			
+			JButton btnn = new JButton("Vizualizați fișierul!");
+			btnn.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					String path = Link.getClientFilePath();
+					File f=new File(path);
+					if (!path.equals(""))
+					{
+						if(!Desktop.isDesktopSupported())
+						{
+							lblPath_1.setText("A survenit o eroare!");
+						}
+			        
+						Desktop desktop = Desktop.getDesktop();
+						try
+						{
+							if(f.exists()) desktop.open(f);
+						}
+						catch(IOException k)
+						{
+							lblPath_1.setText("A survenit o eroare!");
+						}
+					}
+					else
+						lblPath_1.setText("A survenit o eroare!");
+					
+				}
+			});
+			btnn.setFont(new Font("Tahoma", Font.PLAIN, 11));
+			btnn.setBackground(Color.WHITE);
+			btnn.setBounds(243, 319, 160, 30);
+			btnClient.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e) 
+				{
+					// vizualizati fisierul
+				}
+			});
+			client.add(btnn);
+			
+			JLabel lblPrimireFiier = new JLabel("Recepționare fișier");
+			lblPrimireFiier.setBackground(Color.WHITE);
+			lblPrimireFiier.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblPrimireFiier.setForeground(Color.WHITE);
+			lblPrimireFiier.setBounds(105, 29, 234, 30);
+			client.add(lblPrimireFiier);
 		
 		settings = new JPanel();
 		settings.setForeground(Color.WHITE);
@@ -174,35 +353,36 @@ public class GraphicUserInterface {
 			settings.setLayout(null);
 		
 			JLabel lblSett = new JLabel("Set\u0103ri");
+			lblSett.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblSett.setForeground(Color.WHITE);
-			lblSett.setBounds(160, 11, 145, 21);
+			lblSett.setBounds(195, 11, 80, 28);
 			settings.add(lblSett);
 			
 			JLabel lblSetriClient = new JLabel("Set\u0103ri Client");
 			lblSetriClient.setForeground(Color.WHITE);
-			lblSetriClient.setBounds(50, 49, 73, 14);
+			lblSetriClient.setBounds(39, 49, 73, 14);
 			settings.add(lblSetriClient);
 			
 			JLabel lbIpCl = new JLabel("IP Server");
 			lbIpCl.setForeground(Color.WHITE);
-			lbIpCl.setBounds(60, 84, 61, 14);
+			lbIpCl.setBounds(49, 84, 61, 14);
 			settings.add(lbIpCl);
 			
 			tfIpCl = new JTextField();
 			tfIpCl.setText("192.168.0.100");
 			tfIpCl.setColumns(10);
-			tfIpCl.setBounds(131, 81, 297, 20);
+			tfIpCl.setBounds(131, 81, 300, 20);
 			settings.add(tfIpCl);
 			
 			JLabel lbPortCl = new JLabel("Port digital");
 			lbPortCl.setForeground(Color.WHITE);
-			lbPortCl.setBounds(60, 114, 61, 14);
+			lbPortCl.setBounds(51, 115, 61, 14);
 			settings.add(lbPortCl);
 			
 			tfPortCl = new JTextField();
 			tfPortCl.setText("20000");
 			tfPortCl.setColumns(10);
-			tfPortCl.setBounds(141, 112, 297, 20);
+			tfPortCl.setBounds(131, 112, 300, 20);
 			settings.add(tfPortCl);
 			
 			JSeparator separator = new JSeparator();
@@ -221,7 +401,7 @@ public class GraphicUserInterface {
 			
 			JLabel lbAlgSvr = new JLabel("Algoritm de criptare");
 			lbAlgSvr.setForeground(Color.WHITE);
-			lbAlgSvr.setBounds(50, 332, 103, 14);
+			lbAlgSvr.setBounds(50, 332, 134, 14);
 			settings.add(lbAlgSvr);
 			
 			JRadioButton FTP = new JRadioButton("File Transfer Protocol");
@@ -251,7 +431,7 @@ public class GraphicUserInterface {
 			JRadioButton AES = new JRadioButton("Advanced Encryption Standard");
 			AES.setForeground(Color.WHITE);
 			AES.setBackground(new Color(28,111,166));
-			AES.setBounds(72, 405, 181, 23);
+			AES.setBounds(72, 405, 223, 23);
 			settings.add(AES);
 			
 			JLabel lbPortSvr = new JLabel("Port digital");
@@ -262,8 +442,13 @@ public class GraphicUserInterface {
 			tfPortSvr = new JTextField();
 			tfPortSvr.setText("20000");
 			tfPortSvr.setColumns(10);
-			tfPortSvr.setBounds(131, 205, 297, 20);
+			tfPortSvr.setBounds(131, 205, 300, 20);
 			settings.add(tfPortSvr);
+			
+			lblErr = new JLabel("");
+			lblErr.setForeground(Color.WHITE);
+			lblErr.setBounds(50, 435, 46, 14);
+			settings.add(lblErr);
 			
 			JButton btnSett = new JButton("Salvare set\u0103ri");
 			btnSett.addActionListener(new ActionListener() 
@@ -271,15 +456,63 @@ public class GraphicUserInterface {
 				public void actionPerformed(ActionEvent arg0) 
 				{
 					// salvare setari
+					if (Link.clientSettingIPv4(tfIpCl.getText()))
+		            {
+		                lblErr.setText("Introduce-ti o adresa IPv4 valida!");
+		            }
+						
+						
+					if (Link.clientSettingPort(tfPortCl.getText()))
+		            {
+						String s = lblErr.getText();
+						if (s!="")
+						{
+							lblErr.setText(s+"\n"+"Introduceti un numar de port valid!");
+						}
+						else
+							lblErr.setText("Introduceti un numar de port valid!");
+		            }
+		        
+					if (Link.serverSettingPort(tfPortSvr.getText()))
+		            {
+						String s = lblErr.getText();
+						if (s!="")
+		                {
+							lblErr.setText(s+"\n"+"Introduceti un numar de port valid!");
+		                }
+						else
+						lblErr.setText("Introduceti un numar de port valid!");
+		            }
+					
+					String prot="", alg="";
+		        
+					if (FTP.isSelected())
+		            {
+						prot="FTP";
+		            }
+					else
+						if (FTPS.isSelected())
+						{
+							if (AES.isSelected())
+							{
+								alg="AES";
+							}			
+							if (DES.isSelected())
+							{
+								alg="DES";
+							}
+							if (BF.isSelected())
+							{
+								alg="BLOWFISH";
+							}
+						}
+					Link.radioButtonSettings(prot, alg);
 				}
 			});
-			btnSett.setBounds(271, 328, 89, 23);
+			btnSett.setBounds(299, 380, 124, 48);
 			settings.add(btnSett);
 			
-			JLabel lblErr = new JLabel("err");
-			lblErr.setForeground(Color.WHITE);
-			lblErr.setBounds(50, 435, 46, 14);
-			settings.add(lblErr);
+			
 		
 		
 		/*****/
@@ -288,11 +521,6 @@ public class GraphicUserInterface {
 		drawer.setBackground(new Color(15,23,47));
 		contentPane.add(drawer);
 		drawer.setLayout(null);
-		
-		JLabel lbcopyright = new JLabel("Mihai-Alexandru Muntean");
-		lbcopyright.setForeground(Color.WHITE);
-		lbcopyright.setBounds(10, 435, 122, 14);
-		drawer.add(lbcopyright);
 		
 		
 		/***/
@@ -304,22 +532,8 @@ public class GraphicUserInterface {
 		
 		JLabel lblTransfile = new JLabel("TransFile");
 		lblTransfile.setForeground(Color.WHITE);
-		lblTransfile.setBounds(10, 92, 46, 14);
+		lblTransfile.setBounds(25, 92, 107, 14);
 		header.add(lblTransfile);
-		
-		/**
-		Image image=null;
-		try 
-		{
-			image = ImageIO.read(getClass().getResource("/main_icon_round.png"));
-		} 
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		JLabel lblImage = new JLabel(/*new ImageIcon(image)*/);
-		lblImage.setBounds(10, 11, 65, 70);
-		header.add(lblImage);
 		
 		JPanel scthome = new JPanel();
 		scthome.addMouseListener(new MouseAdapter() 
@@ -336,18 +550,14 @@ public class GraphicUserInterface {
 				settings.setVisible(!value);
 			}
 		});
-		scthome.setBackground(new Color(51, 0, 153));
+		scthome.setBackground(new Color(25, 50, 150));
 		scthome.setBounds(0, 140, 216, 40);
 		drawer.add(scthome);
 		scthome.setLayout(null);
 		
-		JLabel lblIcon = new JLabel("icon1");
-		lblIcon.setBounds(10, 11, 46, 14);
-		scthome.add(lblIcon);
-		
 		JLabel lblAcas = new JLabel("Acas\u0103");
 		lblAcas.setForeground(Color.WHITE);
-		lblAcas.setBounds(66, 11, 46, 14);
+		lblAcas.setBounds(40, 10, 46, 14);
 		scthome.add(lblAcas);
 		
 		JPanel sctserver = new JPanel();
@@ -364,18 +574,14 @@ public class GraphicUserInterface {
 				settings.setVisible(!value);
 			}
 		});
-		sctserver.setBackground(new Color(0, 51, 204));
+		sctserver.setBackground(new Color(50, 50, 150));
 		sctserver.setBounds(0, 200, 216, 40);
 		drawer.add(sctserver);
 		sctserver.setLayout(null);
 		
-		JLabel icon_2 = new JLabel("icon2");
-		icon_2.setBounds(10, 11, 46, 14);
-		sctserver.add(icon_2);
-		
 		JLabel lbServer = new JLabel("Trimite fi\u0219ier");
 		lbServer.setForeground(Color.WHITE);
-		lbServer.setBounds(66, 11, 94, 14);
+		lbServer.setBounds(40, 10, 94, 14);
 		sctserver.add(lbServer);
 		
 		JPanel sctclient = new JPanel();
@@ -393,18 +599,14 @@ public class GraphicUserInterface {
 				settings.setVisible(!value);
 			}
 		});
-		sctclient.setBackground(new Color(0, 102, 153));
+		sctclient.setBackground(new Color(50, 50, 150));
 		sctclient.setBounds(0, 260, 216, 40);
 		drawer.add(sctclient);
 		sctclient.setLayout(null);
 		
-		JLabel icon_3 = new JLabel("icon3");
-		icon_3.setBounds(10, 11, 46, 14);
-		sctclient.add(icon_3);
-		
-		JLabel lbClient = new JLabel("Primire fi\u0219ier");
+		JLabel lbClient = new JLabel("Recepționare fișier");
 		lbClient.setForeground(Color.WHITE);
-		lbClient.setBounds(66, 11, 66, 14);
+		lbClient.setBounds(40, 10, 140, 14);
 		sctclient.add(lbClient);
 		
 		JPanel sctsett = new JPanel();
@@ -422,19 +624,20 @@ public class GraphicUserInterface {
 				client.setVisible(!value);
 			}
 		});
-		sctsett.setBackground(new Color(102, 0, 255));
+		sctsett.setBackground(new Color(50, 50, 150));
 		sctsett.setBounds(0, 320, 216, 40);
 		drawer.add(sctsett);
 		sctsett.setLayout(null);
 		
-		JLabel icon_4 = new JLabel("icon4");
-		icon_4.setBounds(10, 11, 46, 14);
-		sctsett.add(icon_4);
-		
 		JLabel lbSettings = new JLabel("Set\u0103ri");
 		lbSettings.setForeground(Color.WHITE);
-		lbSettings.setBounds(66, 11, 46, 14);
+		lbSettings.setBounds(40, 10, 46, 14);
 		sctsett.add(lbSettings);
+		
+		JLabel lbcopyright = new JLabel("Mihai Muntean");
+		lbcopyright.setBounds(24, 435, 128, 14);
+		drawer.add(lbcopyright);
+		lbcopyright.setForeground(Color.WHITE);
 	}
 
 	/**
