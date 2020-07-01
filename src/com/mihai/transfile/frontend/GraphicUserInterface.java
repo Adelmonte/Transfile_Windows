@@ -116,19 +116,14 @@ public class GraphicUserInterface {
 			lblPrgtitle_1.setBounds(20, 273, 232, 14);
 			home.add(lblPrgtitle_1);
 			
-			String para2="<html>"
-					+ "Întâi, în meniul din stânga și se alege „Setări”. Aici, la secțiunea pentru\r\n" + 
-					"        primirea fișierului, în prima casetă de introducere a textului se completează adresa Ipv4\r\n" + 
-					"        validă a dispozitivului distant, iar la următorarea casetă de introducere a textului se\r\n" + 
-					"        introduce un număr pentru portul digital dorit (același ca cel introdus la secțiunea de\r\n" + 
-					"        trimitere a fișierului de la aplicația distantă TransFile\r\n" + 
-					"        . Se selectează de la secțiunea „Setări trimitere fișier”, un protocol de\r\n" + 
-					"        transfer, un algoritm de criptare și se introduce un număr de port digital\r\n" + 
-					"        obligatoriu mai mare de 2000, dar mai mic de 65000).\r\n" + 
-					"        Mai apoi, se apasă butonul rotund din dreapta jos, această acțiune având ca rezultat\r\n" + 
-					"        afișarea unui mesaj care va conține „Setări salvate!” sau „Există o eroare!”."
-					+ "</html>";
-			JLabel lblPrg_1 = new JLabel("<html>\r\nÎntâi, în meniul din stânga și se alege „Setări”. Aici, la secțiunea pentru\r\n        primirea fișierului, în prima casetă de introducere a textului se completează adresa Ipv4\r\n        validă a dispozitivului distant, iar la următorarea casetă de introducere a textului se\r\n        introduce un număr pentru portul digital dorit (același ca cel introdus la secțiunea de\r\n        trimitere a fișierului de la aplicația distantă TransFile. Mai apoi, se apasă butonul din dreapta jos, această acțiune având ca rezultat afișarea unui mesaj care va conține „Setări salvate!” sau „Există o eroare!”.</html>");
+			JLabel lblPrg_1 = new JLabel("<html>\r\nÎntâi, în meniul din stânga și se alege „Setări”. "
+					+ "Aici, la secțiunea pentru primirea fișierului, în prima casetă de introducere a"
+					+ " textului se completează adresa Ipv4 validă a dispozitivului distant, iar la "
+					+ "următorarea casetă de introducere a textului se introduce un număr pentru portul"
+					+ " digital dorit (același ca cel introdus la secțiunea de trimitere a fișierului "
+					+ "de la aplicația distantă TransFile. Mai apoi, se apasă butonul din dreapta jos, "
+					+ "această acțiune având ca rezultat afișarea unui mesaj care va conține "
+					+ "„Setări salvate!” sau „Există o eroare!”.</html>");
 			lblPrg_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 			lblPrg_1.setForeground(Color.WHITE);
 			lblPrg_1.setBounds(30, 293, 398, 112);
@@ -143,20 +138,17 @@ public class GraphicUserInterface {
 			lblAct.setBounds(20, 417, 406, 32);
 			home.add(lblAct);
 			
-			String parag="<html>"
-					+ "Întâi, în meniul din stânga se alege „Setări”. Aici, se selectează un protocol" + 
-					"        de transfer, un algoritm de criptare și se introduce numărul portului digital." + 
-					"        Se apasă butonul de salvare a setărilor, această acțiune având ca rezultat afișarea unui mesaj\r\n" + 
-					"        care va conține „Setări salvate!” sau „Există o eroare!”. În continuare, în meniul din dreapta se selectează\r\n" + 
-					"        „Trimite fișierul”. Pe ecran sunt două butoane. Se apasă butonul de selecție a unui fișier\r\n" + 
-					"        și se selectează fișierul dorit. După selecție aplicația va afișa un ecran cu\r\n" + 
-					"        patru butoane. Este imperios să se apese butonul cel mai de sus, pentru a confirma selecția\r\n" + 
-					"        fișierului. Există posibilitatea selecției altui fișier, a deschiderii fișierului selectat\r\n" + 
-					"        în aplicație externă și posibilitatea revenirii la ecranul inițial. După acești pași, se\r\n" + 
-					"        apasă butonul „Trimiteți fișierul”. În continuare, se vor urma instrucțiunile pentru\r\n" + 
-					"        primirea fișierului din aplicația TransFile distantă."
-					+ "</html>";
-			JLabel lbpar1 = new JLabel("<html>Întâi, în meniul din stânga se alege „Setări”. Aici, se selectează un protocol de transfer, un algoritm de criptare și se introduce numărul portului digital (același ca cel introdus la secțiunea de primire a fișierului de la aplicația distantă Transfile) . Se va apasa butonul de salvare a setărilor, această acțiune având ca rezultat afișarea unui mesaj care va conține „Setări salvate!” sau „Există o eroare!”. În continuare, în meniul din dreapta se selectează „Trimite fișier”. Pe ecran sunt trei butoane. Se apasă butonul „Selectează fișier” și se selectează fișierul dorit. Există și posibilitatea deschiderii fișierului selectat în aplicație externă. După acești pași, se apasă butonul „Trimiteți fișierul!”. În continuare, se vor urma instrucțiunile pentru primirea fișierului din aplicația TransFile distantă.</html>");
+			JLabel lbpar1 = new JLabel("<html>Întâi, în meniul din stânga se alege „Setări”. Aici, "
+					+ "se selectează un protocol de transfer, un algoritm de criptare și se introduce "
+					+ "numărul portului digital (același ca cel introdus la secțiunea de primire a "
+					+ "fișierului de la aplicația distantă Transfile) . Se va apasa butonul de salvare "
+					+ "a setărilor, această acțiune având ca rezultat afișarea unui mesaj care va "
+					+ "conține „Setări salvate!” sau „Există o eroare!”. În continuare, în meniul din "
+					+ "dreapta se selectează „Trimite fișier”. Pe ecran sunt trei butoane. Se apasă "
+					+ "butonul „Selectează fișier” și se selectează fișierul dorit. Există și posibilitatea"
+					+ " deschiderii fișierului selectat în aplicație externă. După acești pași, se apasă "
+					+ "butonul „Trimiteți fișierul!”. În continuare, se vor urma instrucțiunile "
+					+ "pentru primirea fișierului din aplicația TransFile distantă.</html>");
 			lbpar1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 			lbpar1.setForeground(Color.WHITE);
 			lbpar1.setBounds(30, 104, 408, 151);
@@ -170,7 +162,7 @@ public class GraphicUserInterface {
 		
 			JLabel lblServer = new JLabel("Calea fișierului ales este:");
 			lblServer.setForeground(Color.WHITE);
-			lblServer.setBounds(51, 106, 195, 14);
+			lblServer.setBounds(51, 106, 270, 14);
 			lblServer.setVisible(false);
 			server.add(lblServer);
 			
@@ -191,8 +183,8 @@ public class GraphicUserInterface {
 			lblPath.setBounds(61, 131, 352, 102);
 			server.add(lblPath);
 			
-			JButton btn2 = new JButton("Selectează fișierul");
-			btn2.addActionListener(new ActionListener() 
+			JButton btnslsvr = new JButton("Selectează fișierul");
+			btnslsvr.addActionListener(new ActionListener() 
 			{
 				public void actionPerformed(ActionEvent e) 
 				{
@@ -210,13 +202,14 @@ public class GraphicUserInterface {
 					Link.setServerPath(path);
 				}
 			});
-			btn2.setBackground(Color.WHITE);
-			btn2.setBounds(260, 310, 160, 30);
-			server.add(btn2);
+			btnslsvr.setBackground(Color.WHITE);
+			btnslsvr.setBounds(260, 310, 160, 30);
+			server.add(btnslsvr);
 			
-			JButton btn1 = new JButton("Vizualizați fișierul!");
-			btn1.setBackground(Color.WHITE);
-			btn1.addActionListener(new ActionListener() 
+			// ButToN VIZualizare SerVeRS
+			JButton btnvizsvr = new JButton("Vizualizați fișierul!");
+			btnvizsvr.setBackground(Color.WHITE);
+			btnvizsvr.addActionListener(new ActionListener() 
 			{
 				public void actionPerformed(ActionEvent e) 
 				{
@@ -253,8 +246,8 @@ public class GraphicUserInterface {
 					
 				}
 			});
-			btn1.setBounds(51, 364, 160, 30);
-			server.add(btn1);
+			btnvizsvr.setBounds(51, 364, 160, 30);
+			server.add(btnvizsvr);
 			
 			JLabel lblServer_1 = new JLabel("Trimite fișier");
 			lblServer_1.setForeground(Color.WHITE);
@@ -270,13 +263,13 @@ public class GraphicUserInterface {
 		
 			JLabel lblClient = new JLabel("Fișierul este salvat la locația:");
 			lblClient.setForeground(Color.WHITE);
-			lblClient.setBounds(57, 91, 151, 14);
+			lblClient.setBounds(57, 91, 259, 14);
 			lblClient.setVisible(false);
 			client.add(lblClient);
 			
 			JLabel lblPath_1 = new JLabel("Fișierul încă nu a fost primit.");
 			lblPath_1.setForeground(Color.WHITE);
-			lblPath_1.setBounds(67, 116, 160, 14);
+			lblPath_1.setBounds(67, 116, 234, 14);
 			client.add(lblPath_1);
 			
 			JButton btnClient = new JButton("Permiteți primirea fișierului!");
@@ -297,8 +290,8 @@ public class GraphicUserInterface {
 			
 			
 			
-			JButton btnn = new JButton("Vizualizați fișierul!");
-			btnn.addActionListener(new ActionListener() 
+			JButton btnvizcl = new JButton("Vizualizați fișierul!");
+			btnvizcl.addActionListener(new ActionListener() 
 			{
 				public void actionPerformed(ActionEvent arg0) 
 				{
@@ -326,17 +319,10 @@ public class GraphicUserInterface {
 					
 				}
 			});
-			btnn.setFont(new Font("Tahoma", Font.PLAIN, 11));
-			btnn.setBackground(Color.WHITE);
-			btnn.setBounds(243, 319, 160, 30);
-			btnClient.addActionListener(new ActionListener() 
-			{
-				public void actionPerformed(ActionEvent e) 
-				{
-					// vizualizati fisierul
-				}
-			});
-			client.add(btnn);
+			btnvizcl.setFont(new Font("Tahoma", Font.PLAIN, 11));
+			btnvizcl.setBackground(Color.WHITE);
+			btnvizcl.setBounds(243, 319, 160, 30);
+			client.add(btnvizcl);
 			
 			JLabel lblPrimireFiier = new JLabel("Recepționare fișier");
 			lblPrimireFiier.setBackground(Color.WHITE);
@@ -358,9 +344,9 @@ public class GraphicUserInterface {
 			lblSett.setBounds(195, 11, 80, 28);
 			settings.add(lblSett);
 			
-			JLabel lblSetriClient = new JLabel("Set\u0103ri Client");
+			JLabel lblSetriClient = new JLabel("Setări pentru primirea fișierului");
 			lblSetriClient.setForeground(Color.WHITE);
-			lblSetriClient.setBounds(39, 49, 73, 14);
+			lblSetriClient.setBounds(39, 49, 189, 14);
 			settings.add(lblSetriClient);
 			
 			JLabel lbIpCl = new JLabel("IP Server");
@@ -389,9 +375,9 @@ public class GraphicUserInterface {
 			separator.setBounds(17, 149, 421, 2);
 			settings.add(separator);
 			
-			JLabel lbSettSvr = new JLabel("Setari Server");
+			JLabel lbSettSvr = new JLabel("Setări pentru trimiterea fișierului");
 			lbSettSvr.setForeground(Color.WHITE);
-			lbSettSvr.setBounds(39, 169, 80, 14);
+			lbSettSvr.setBounds(39, 169, 236, 14);
 			settings.add(lbSettSvr);
 			
 			JLabel lbProtSvr = new JLabel("Protocol de transfer");
@@ -440,14 +426,14 @@ public class GraphicUserInterface {
 			settings.add(lbPortSvr);
 			
 			tfPortSvr = new JTextField();
-			tfPortSvr.setText("20000");
+			tfPortSvr.setText("5001");
 			tfPortSvr.setColumns(10);
 			tfPortSvr.setBounds(131, 205, 300, 20);
 			settings.add(tfPortSvr);
 			
-			lblErr = new JLabel("");
+			lblErr = new JLabel("Nu sunt erori!");
 			lblErr.setForeground(Color.WHITE);
-			lblErr.setBounds(50, 435, 46, 14);
+			lblErr.setBounds(50, 435, 371, 14);
 			settings.add(lblErr);
 			
 			JButton btnSett = new JButton("Salvare set\u0103ri");
@@ -455,58 +441,77 @@ public class GraphicUserInterface {
 			{
 				public void actionPerformed(ActionEvent arg0) 
 				{
+					lblErr.setText(" ");
 					// salvare setari
-					if (Link.clientSettingIPv4(tfIpCl.getText()))
+					boolean g=Link.clientSettingIPv4(tfIpCl.getText());
+					if (g)
 		            {
-		                lblErr.setText("Introduce-ti o adresa IPv4 valida!");
+		                lblErr.setText("Introduce-ti o adresa IPv4 valida! ");
 		            }
 						
-						
-					if (Link.clientSettingPort(tfPortCl.getText()))
+						boolean truth = Link.clientSettingPort(tfPortCl.getText());
+					if (truth)
 		            {
 						String s = lblErr.getText();
 						if (s!="")
 						{
-							lblErr.setText(s+"\n"+"Introduceti un numar de port valid!");
+							lblErr.setText(s+"\n"+"Introduceti un numar de port valid! ");
 						}
 						else
 							lblErr.setText("Introduceti un numar de port valid!");
 		            }
 		        
-					if (Link.serverSettingPort(tfPortSvr.getText()))
+					truth=Link.serverSettingPort(tfPortSvr.getText());
+					if (truth)
 		            {
 						String s = lblErr.getText();
 						if (s!="")
 		                {
-							lblErr.setText(s+"\n"+"Introduceti un numar de port valid!");
+							lblErr.setText(s+"Introduceti un numar de port valid! ");
 		                }
 						else
-						lblErr.setText("Introduceti un numar de port valid!");
+						lblErr.setText("Introduceti un numar de port valid! ");
 		            }
 					
+					String s = lblErr.getText();
 					String prot="", alg="";
-		        
-					if (FTP.isSelected())
-		            {
-						prot="FTP";
-		            }
-					else
-						if (FTPS.isSelected())
+					boolean ib=false;
+					if (FTP.isSelected() || FTPS.isSelected())
+					{
+		            	if (FTP.isSelected())
+							{prot="FTP";
+							ib=true;
+							}
+						else
+		            	if (FTPS.isSelected())
 						{
+		            		
 							if (AES.isSelected())
 							{
 								alg="AES";
-							}			
-							if (DES.isSelected())
-							{
-								alg="DES";
+								ib=true;
 							}
-							if (BF.isSelected())
-							{
-								alg="BLOWFISH";
-							}
+							else		
+								if (DES.isSelected())
+								{
+									ib=true;
+									alg="DES";
+								}
+								else
+									if (BF.isSelected())
+									{
+										ib=true;
+										alg="BLOWFISH";
+									}
+									else
+										lblErr.setText(s+"Selectați un algoritm de criptare! ");
 						}
-					Link.radioButtonSettings(prot, alg);
+		            	else ;
+		            	if (ib)
+		            		Link.radioButtonSettings(prot, alg);
+					}
+		            else
+		            		lblErr.setText(s+"Selectați un protocol de transfer! ");
 				}
 			});
 			btnSett.setBounds(299, 380, 124, 48);

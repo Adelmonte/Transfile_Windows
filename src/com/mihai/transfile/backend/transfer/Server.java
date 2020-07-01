@@ -49,10 +49,6 @@ public class Server extends Thread
 	}
     // metode  
     
-    public void start()
-    {
-    	this.run();
-    }
     
     
     /**

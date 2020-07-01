@@ -12,16 +12,28 @@ import javax.swing.JFileChooser;
 public class Values 
 {
     
-     private static String path;
+     private static String spath;
 
-    public static String getPath()
+    public static String getServerPath()
     {
-        return Values.path;
+        return Values.spath;
     }
 
-    public static void setPath(String cale)
+    public static void setServerPath(String cale)
     {
-        Values.path=cale;
+        Values.spath=cale;
+    }
+    
+    private static String cpath;
+
+    public static String getClientPath()
+    {
+        return Values.cpath;
+    }
+
+    public static void setClientPath(String cale)
+    {
+        Values.cpath=cale;
     }
     
 	/**
@@ -79,7 +91,7 @@ public class Values
 		
 		if ((port>0) && (port <65536))
 		{
-			Values.PORTClient = port;
+			Values.PORTServer = port;
 		}
 		else
                     err=true;
@@ -315,5 +327,56 @@ public class Values
 			s=s.substring(0, nr);
 		return s;
 	}
+	
+	private static boolean verifyDupplicate(File folder, String  filename)
+    {
+        boolean p=false;
+        if (folder.isDirectory())
+        {
+            File[] list = folder.listFiles();
+            for (int i=0; i<list.length;i++)
+            {
+                String f1 = list[i].getName();
+                if (filename.equals(f1))
+                    p=true;
+            }
+        }
+        else
+            p=true;
+        return p;
+    }
+
+    public static String adjustFileName(File folder, String fileName, int iteration)
+    {
+      
+        String name="";
+
+        if (Values.verifyDupplicate(folder, fileName))
+        {
+            iteration++;
+            int p;
+            p= fileName.lastIndexOf('.');
+            int j=0;
+            while (j<fileName.length())
+            {
+                if (j!=p)
+                {
+                    name= name+fileName.charAt(j);
+                }
+                else
+                {
+                    name=name+"("+iteration+").";
+                }
+                j++;
+            }
+            while (Values.verifyDupplicate(folder, name))
+            {
+                name=Values.adjustFileName(folder, name,iteration);
+            }
+        }
+        else
+            name=fileName;
+            return name;
+    }
 }
 

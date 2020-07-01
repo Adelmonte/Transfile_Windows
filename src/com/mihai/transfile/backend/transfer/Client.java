@@ -145,6 +145,7 @@ public class Client extends Thread
 		String s = this.readFileName(is);
 		crypted = new File(path.getAbsolutePath()+"/OUT.bin");
 		decrypted = new File(path.getAbsolutePath()+"/"+s);
+		Values.setClientPath(decrypted.getAbsolutePath());
 		return s;
 		
 	}
@@ -168,8 +169,11 @@ public class Client extends Thread
 		{
 			e.printStackTrace();
 		}
+		s= String.valueOf(array);
+		s=Values.adjustFileName(this.path,s, 0);
 		
-		return String.valueOf(array);
+		
+		return s;
 	}
 	
 	private void writeInFile(InputStream is, FileOutputStream fos)

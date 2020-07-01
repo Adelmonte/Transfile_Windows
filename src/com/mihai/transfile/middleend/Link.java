@@ -26,18 +26,10 @@ public class Link
 				
 	Values.setKey(KeyCryption.cryptKey(Values.getAlgorithm()));
 	// server Windows
-	JFileChooser jfc = new JFileChooser();
-	jfc.setCurrentDirectory(new java.io.File("C:/Users/Mihai/Desktop"));
-	jfc.setDialogTitle("Alegere Fisier");
-	if (jfc.showOpenDialog(null)== JFileChooser.APPROVE_OPTION)
-	{}
-	
-	//jfc.showOpenDialog(null);
 			
 	//File F = new File("C:/Users/Mihai/Desktop/"+p);
-	File F = jfc.getSelectedFile().getAbsoluteFile();
+	File F = new File (Values.getServerPath());
 			
-	String extension = Values.extension(F);
 	String s=F.getName();
 	String path = F.getParent();
 	F.renameTo(new File(path + "/a"+s));
@@ -75,21 +67,23 @@ public class Link
     {
         boolean state=false;
         String host = Values.getIpv4(); 
-	int port = Values.getPortServer();
-	//File file = new File("C:/Users/Mihai/Desktop/eclipse");
-        File file = FileSystemView.getFileSystemView().getHomeDirectory();
-        //jLabel12.setText(file.getAbsolutePath());
-	Client cl = new Client(port,host,file);//port, ip-ul tel, parent folder
-	cl.start();
-	try
-	{
+        int port = Values.getPortClient();
+        File file = new File("C:\\TransfileDownloads");
+        if (!file.exists())
+        {
+        	file.mkdir();
+        }
+        Client cl = new Client(port,host,file);//port, ip-ul tel, parent folder
+        cl.start();
+        try
+        {
             cl.join();
             state=true;
-	}
-	catch(InterruptedException e)
-	{
+        }
+        catch(InterruptedException e)
+        {
             e.printStackTrace();
-	} 
+        } 
         return state;
     }
 
@@ -101,7 +95,7 @@ public class Link
 
     public static String getClientFilePath()
     {
-        return Values.getPath();
+        return Values.getClientPath();
     }
 
     public static boolean clientSettingIPv4(String ipv4)
@@ -127,12 +121,12 @@ public class Link
 
     public static String getServerFilePath()
     {
-        return Values.getPath();
+        return Values.getServerPath();
     }
 
     public static void radioButtonSettings(String prot, String alg)
     {
-        prot="FTP"; /************************************************/
+        prot="FTP"; /**********************************/
         if (prot.equals("FTP"))
         {
             Values.setAlgorithm("NOTHING");
@@ -146,7 +140,7 @@ public class Link
 
     public static void setServerPath(String path)
     {
-        Values.setPath(path);
+        Values.setServerPath(path);
     }
     
 }
